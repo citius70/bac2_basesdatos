@@ -1,0 +1,179 @@
+# ===============================
+#   CONFIGURACIÓN PRINCIPAL
+# ===============================
+site_name: Bases de Datos
+site_author: Alberto Durán Pérez
+site_description: Apuntes y recursos de SQL para 2º de Bachillerato
+site_url: https://tusitio-ejemplo.github.io/
+
+# ===============================
+#   TEMA MATERIAL
+# ===============================
+theme:
+  name: material
+  language: es
+  palette:
+    - scheme: default # 💡 Modo claro
+      primary: indigo # Verde azulado elegante
+      accent: indigo # Toque moderno de verde lima
+      toggle:
+        icon: material/weather-night
+        name: Cambiar a modo oscuro
+    - scheme: slate # 🌙 Modo oscuro
+      primary: teal
+      accent: lime
+      toggle:
+        icon: material/weather-sunny
+        name: Cambiar a modo claro
+  features:
+  # - navigation.top
+  # - navigation.sections     # Submenús laterales
+    - navigation.instant      # Navegación instantánea sin recargar la página
+  # - navigation.expand       # Siempre mostrar desplegados
+  # - navigation.tabs         # Pestañas para contenido alternativo
+    - navigation.tabs.sticky  # Pestañas pegajosas
+  # - navigation.tabs.alternate_style  # Estilo alternativo para pestañas 
+    - navigation.footer
+    - navigation.indexes      # Índices de contenido
+    - navigation.tracking 
+    - footer.social
+    - footer.icons
+    - search.suggestions
+    - search.share
+    - content.code.copy
+    - content.action.edit
+    - content.tabs.link
+    - search.highlight
+  # - toc.integrate
+  navigation:
+    hierarchy: "flat"
+  extra:
+    navigation:
+      position: right
+  # font:
+  #   text: Noto # Fuente moderna y legible
+  #   code: Fira Code # Excelente para fragmentos de código
+
+# ===============================
+#   EXTENSIONES MARKDOWN
+# ===============================
+markdown_extensions:
+  - admonition
+  - attr_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.mark
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          # format: !!python/name:pymdownx.superfences.fence_div_format
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+# ===============================
+#   NAVEGACIÓN
+# ===============================
+nav:
+  - Inicio: index.md
+  - 1. Introducción: introduccion.md
+  - 2. Definición de bases de datos: bd_def.md
+  - 3. Bases de datos relacionales: bd_relacionales.md
+  - 4. Base de datos no relacionales: bd_no_relacionales.md
+  - 5. Elección del tipo: eleccion_tipo.md
+  - 6. Conceptos básicos de SQL:
+      - 6.1. Conceptos básicos: conceptos_basicos_sql.md
+      - 6.2. Ejercicios. Conceptos básicos de SQL: conceptos_basicos_sql_ejercicios.md
+  - 7. Comandos básicos:
+      - 7.1. Introducción a los comandos: comandos_bd.md
+      - 7.2. Comandos DDL: ddl_bd.md
+      - 7.3. Comandos DML: dml_bd.md
+      - 7.4. Comandos DQL: 
+        - 7.4. Comandos DQL: dql.md
+        - 7.4.1. Opciones y cláusulas de SELECT: dql_opciones.md
+  - 8. Funciones de agregación: funciones_agregacion.md
+  - 9. Relaciones entre tablas. JOIN : join.md
+  - Resumen: resumen.md
+  - Ejercicio resuelto: ejercicio_resuelto.md
+  - Ejercicio final: ejercicio_final.md
+  - Documento en PDF: pdf/documento.pdf
+
+# ===============================
+#   OPCIONAL: CONFIGURACIÓN EXTRA
+# ===============================
+extra:
+  social:
+    - icon: material/github
+      link: https://github.com/tu_usuario
+      name: GitHub
+    - icon: material/email
+      link: mailto:alberto@example.com
+      name: Contacto
+
+# ===============================
+#   OPCIONAL: PLUGINS
+# ===============================
+plugins:
+  - search
+  - with-pdf:
+      author: Alberto Durán Pérez              
+        #copyright: ANY TEXT
+      title: Bases de datos
+      subject: Apuntes y recursos de SQL para 2º de Bachillerato
+      cover: true
+      back_cover: false
+      cover_title: BASES DE DATOS
+      cover_subtitle: 2º de Bachillerato - TIC II
+        #custom_template_path: TEMPLATES PATH
+        #
+      toc_title: Tabla de contenidos
+      chapter_title: Capítulo
+      heading_shift: false
+      toc_level: 2
+      ordered_chapter_level: 2
+        #excludes_children:
+        #    - 'release-notes/:upgrading'
+        #    - 'release-notes/:changelog'
+        #
+        #exclude_pages:
+        #    - 'bugs/'
+        #    - 'appendix/contribute/'
+        #convert_iframe:
+        #    - src: IFRAME SRC
+        #      img: POSTER IMAGE URL
+        #      text: ALTERNATE TEXT
+        #    - src: ...
+        # two_columns_level: 4
+        #
+        #render_js: true
+        #headless_chrome_path: headless-chromium
+        #
+        #output_path: any-place/document.pdf
+        #enabled_if_env: ENABLE_PDF_EXPORT
+        #
+        #debug_html: true
+        #show_anchors: true
+      # verbose: true
+      enabled: true
+      stylesheet:
+        - css/pdf-fix.css
+      output_path: pdf/documento.pdf
+
+extra_css:
+  - https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Fira+Code:wght@400;500&display=swap
+  - css/extra.css
+
+  # Extra JavaScript
+# extra_javascript:
+#   - https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/inter.min.css
+#   - https://cdn.jsdelivr.net/npm/@fontsource/fira-code@4.2.2/index.min.css

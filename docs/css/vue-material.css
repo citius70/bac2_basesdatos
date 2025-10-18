@@ -1,0 +1,217 @@
+/* Vue Material Markdown Theme for MkDocs */
+:root {
+    --vue-primary: #42b883;
+    --vue-secondary: #35495e;
+    --vue-accent: #647eff;
+    --vue-success: #4fc08d;
+    --vue-warning: #f4a623;
+    --vue-error: #ff5252;
+}
+
+/* Override MkDocs default styles */
+.md-typeset {
+    font-family: 'Inter', 'Segoe UI', Roboto, -apple-system, sans-serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    font-size: 16px;
+}
+
+/* Headers with Vue gradient */
+.md-typeset h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 2rem 0 1.5rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #42b883;
+    background: linear-gradient(135deg, #42b883 0%, #35495e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.md-typeset h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #34495e;
+    margin: 2rem 0 1rem 0;
+    padding: 0.5rem 0;
+    border-left: 4px solid #42b883;
+    padding-left: 1rem;
+}
+
+.md-typeset h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #42b883;
+    margin: 1.5rem 0 1rem 0;
+}
+
+/* Links */
+.md-typeset a {
+    color: #42b883;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.md-typeset a:hover {
+    color: #35495e;
+    background-color: #42b88322;
+    text-decoration: none;
+}
+
+/* Code blocks */
+.md-typeset code {
+    background: #f8f9fa;
+    color: #e53e3e;
+    padding: 0.2rem 0.4rem;
+    border-radius: 6px;
+    font-family: 'Fira Code', 'Monaco', 'Cascadia Code', monospace;
+    font-size: 0.9em;
+    border: 1px solid #e2e8f0;
+}
+
+.md-typeset pre {
+    background: #1a202c;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #2d3748;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.md-typeset pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+}
+
+/* Tables */
+.md-typeset table:not([class]) {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.md-typeset table:not([class]) th {
+    background: linear-gradient(135deg, #42b883, #35495e);
+    color: white;
+    font-weight: 600;
+}
+
+.md-typeset table:not([class]) td {
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.md-typeset table:not([class]) tr:hover td {
+    background-color: #f7fafc;
+}
+
+/* Blockquotes */
+.md-typeset blockquote {
+    background: linear-gradient(135deg, #42b88308 0%, #35495e08 100%);
+    border-left: 4px solid #42b883;
+    border-radius: 0 8px 8px 0;
+    color: #4a5568;
+    font-style: italic;
+}
+
+/* Navigation */
+.md-nav__link--active {
+    color: #42b883 !important;
+    font-weight: 600;
+}
+
+.md-nav__link:hover {
+    color: #42b883 !important;
+}
+
+/* Header */
+.md-header {
+    background: linear-gradient(135deg, #42b883 0%, #35495e 100%);
+}
+
+/* Sidebar */
+.md-sidebar__inner {
+    border-right: 1px solid #e2e8f0;
+}
+
+/* Footer */
+.md-footer {
+    background: #35495e;
+}
+
+/* Buttons */
+.md-typeset .md-button {
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.md-typeset .md-button--primary {
+    background-color: #42b883;
+    border-color: #42b883;
+}
+
+.md-typeset .md-button--primary:hover {
+    background-color: #35495e;
+    border-color: #35495e;
+    transform: translateY(-2px);
+}
+
+/* Admonitions Vue-themed */
+.md-typeset .admonition {
+    border-radius: 8px;
+    border-left: 4px solid;
+}
+
+.md-typeset .admonition.note {
+    border-left-color: #42b883;
+}
+
+.md-typeset .admonition.tip {
+    border-left-color: #42b883;
+}
+
+.md-typeset .admonition.warning {
+    border-left-color: #f4a623;
+}
+
+.md-typeset .admonition.danger {
+    border-left-color: #ff5252;
+}
+
+/* Search */
+.md-search__form {
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.md-search__form:hover {
+    background: #e9ecef;
+}
+
+/* Responsive */
+@media (max-width: 76.1875em) {
+    .md-nav--primary .md-nav__title {
+        background: linear-gradient(135deg, #42b883 0%, #35495e 100%);
+        color: white;
+    }
+}
+
+/* Dark mode support */
+[data-md-color-scheme="slate"] {
+    --md-default-bg-color: #1a202c;
+    --md-default-fg-color: #e2e8f0;
+    --md-typeset-color: #e2e8f0;
+}
+
+[data-md-color-scheme="slate"] .md-typeset pre {
+    background: #2d3748;
+}
+
+[data-md-color-scheme="slate"] .md-typeset code:not(pre code) {
+    background: #2d3748;
+    color: #feb2b2;
+}
