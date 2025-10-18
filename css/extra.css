@@ -1,0 +1,65 @@
+/* css/extra.css - Para el sitio web HTML */
+
+/* Cambiar fuente principal del texto */
+body {
+    font-family: 'Menlo', 'Noto', 'Segoe UI', Arial, sans-serif !important;
+}
+
+/* Cambiar fuente para código */
+code, pre, .md-typeset code, .md-typeset pre {
+    font-family: 'Fira Code', 'Consolas', 'Monaco', monospace !important;
+}
+
+/* Opcional: Mejorar legibilidad */
+.md-typeset {
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+.md-typeset h1, .md-typeset h2, .md-typeset h3 {
+    font-weight: 600;
+}
+
+
+
+
+
+/* /* css/extra.css */
+
+/* Solucionar problemas de visualización de números en PDF */
+/* body {
+/*     font-feature-settings: "lnum" 1;
+    -webkit-font-feature-settings: "lnum" 1;
+    -moz-font-feature-settings: "lnum" 1;
+    font-variant-numeric: lining-nums;
+} */
+
+/* Forzar visibilidad de todos los caracteres */
+/* * {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+} */
+
+/* Específico para números en texto normal */
+/* p, li, td, th, span, div {
+    font-variant-numeric: lining-nums;
+    font-feature-settings: "lnum";
+}
+ */
+/* Asegurar que los números en código se vean */
+/* code, pre {
+    font-feature-settings: "lnum" 1;
+    font-variant-numeric: lining-nums;
+} */ */
+
+
+/* Usar una fuente que tenga buena compatibilidad con números
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: "Roboto", "DejaVu Sans", Arial, sans-serif;
+}
+
+code, pre {
+    font-family: "Roboto Mono", "DejaVu Sans Mono", monospace;
+} */

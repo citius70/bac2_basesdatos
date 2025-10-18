@@ -1,0 +1,45 @@
+/* Solución completa para números en PDF */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+@page {
+    margin-left: 3cm;
+    margin-right: 2cm;
+    margin-top: 2cm; 
+    margin-bottom: 2cm; 
+    size: A4;
+}
+
+body {
+    font-family: "Menlo", "Inter", "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+    font-feature-settings: "kern" 1, "liga" 1, "lnum" 1;
+    font-variant-numeric: lining-nums;
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+}
+
+/* Asegurar que todos los elementos muestren números */
+* {
+    font-variant-numeric: inherit;
+    font-feature-settings: inherit;
+}
+
+code, pre {
+    font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+    font-feature-settings: "lnum" 1;
+}
+
+table {
+    font-feature-settings: "lnum" 1, "tnum" 1;
+    font-variant-numeric: lining-nums tabular-nums;
+}
+
+@media print {
+    body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+}
+
