@@ -2,6 +2,8 @@
 
 https://app.ed.team/cursos/mysql
 
+https://sqlninja.ai/
+
 
 La vida está dominada por los **datos**: tu cumpleaños, tu talla de pantalón, la dirección de tu casa, entre otras cosas. Imagina una vida sin datos. Incluso nuestros antepasados los necesitaban: ¿Cuántos mamuts necesitaban cazar durante el invierno? ¿Qué tipo de lanzas debían fabricar? ¿Qué plantas son venenosas? ¿Cómo protegerse del frío? Sin datos nuestra vida sería imposible de vivir.
 

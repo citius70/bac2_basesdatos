@@ -1,6 +1,6 @@
 # Definición de bases de datos
 
-Las bases de datos son esenciales porque nos ayudan a resolver problemas reales y a tomar decisiones informadas en ámbitos como la tecnología, la ciencia, el comercio o la educación.
+Las bases de dato  son esenciales porque nos ayudan a resolver problemas reales y a tomar decisiones informadas en ámbitos como la tecnología, la ciencia, el comercio o la educación.
 
 ![bd](img/biblioteca.png){ width="40%" style="float: right; margin-left: 1em;" }
 
