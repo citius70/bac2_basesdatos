@@ -11,7 +11,7 @@ Nuestros antepasados guardaban la información en su memoria y la transmitían d
 
 ![Computadoras](img/cintasmagneticas.jpg){ width="40%" style="float: right; margin-left: 1em;" }
 
-Casi dos mil años después, en la década de 1950, se crean las primeras computadoras y, aunque era gigantescas, su función era la misma que las actuales: **procesar y manipular datos**. Guardar esos datos en un soporte que los conserve, es a la tecnología, lo que la escritura al ser humano. Al inicio, se escribía y se leía la información en cintas magnéticas de forma secuencial, un proceso que tardaba mucho tiempo porque, suponiendo que se escribiera el alfabeto, tendrías que pasar por la A, la B, la C hasta llegar a la Z en lugar de ir directamente a ella.
+Casi dos mil años después, en la década de 1950, se crean las primeras computadoras y, aunque era gigantescas, su función era la misma que las actuales: **procesar y manipular datos**. Guardar esos datos en un soporte que los conserve, es a la tecnología, lo que la escritura al ser humano. Al inicio, se escribía y se leía la información en *cintas magnéticas* de forma secuencial, un proceso que tardaba mucho tiempo porque, suponiendo que se escribiera el alfabeto, tendrías que pasar por la A, la B, la C hasta llegar a la Z en lugar de ir directamente a ella.
 
 ![Computadoras](img/computadora.jpg){ width="80%" style="display:block; margin:auto;" }
 
@@ -19,7 +19,7 @@ Es en los **años 70 se creó el primer modelo de bases de datos**, un sistema p
 
 Hacia los años 2000 aparece un nuevo tipo de bases de datos: **las NoSQL** (desde su nombre niegan el concepto SQL). En ese tiempo, la web explota y empresas como Google, Amazon o Facebook necesitan un acceso ultra rápido a su información que no era posible con el modelo SQL.
 
-Mientras las bases de datos** SQL tienen como prioridad la integridad de los datos**, **las NoSQL priorizan el rápido acceso a ellos**, aún a costa de sacrificar la integridad de los datos. Entonces, ¿Qué es mejor? ¿la velocidad? ¿o asegurarnos que los datos sean correctos? Como todo: depende.
+Mientras las bases de datos **SQL tienen como prioridad la integridad de los datos**, **las NoSQL priorizan el rápido acceso a ellos**, aún a costa de sacrificar la integridad de los datos. Entonces, ¿Qué es mejor? ¿la velocidad? ¿o asegurarnos que los datos sean correctos? Como todo: depende.
 
 
 !!! note "Bases de datos"
