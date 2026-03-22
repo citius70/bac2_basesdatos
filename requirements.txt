@@ -1,0 +1,4 @@
+mkdocs-material
+mkdocs-enumerate-headings-plugin
+mkdocs-with-pdf
+mkdocs-glightbox
