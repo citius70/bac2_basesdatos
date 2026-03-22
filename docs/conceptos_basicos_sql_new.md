@@ -192,8 +192,8 @@ En lugar de guardar el nombre del curso, guardamos un **identificador único** d
 
 **¿Desventajas?**
 
-- ⚠️ Necesitamos dos tablas en lugar de una  
-- ⚠️ Consultas un poco más complejas (necesitamos relacionar tablas)  
+- ⚠️ Necesitamos dos tablas en lugar de una.  
+- ⚠️ Consultas un poco más complejas (necesitamos relacionar tablas).  
 
 ---
 
@@ -240,9 +240,10 @@ erDiagram
 
 **Explicación:**  
 - **1 curso** → **Muchos alumnos** (`||--o{`)  
-- Un curso puede tener múltiples alumnos  
+    - Un curso puede tener múltiples alumnos  
 - Pero cada alumno pertenece a **un único curso**  
-- La relación se llama **1:N (uno a muchos)**  
+
+> La relación se llama **1:N (uno a muchos)**  
 
 ---
 
