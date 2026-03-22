@@ -1,0 +1,9 @@
+
+mkdocs_env/scripts/activate
+mkdocs build
+mkdocs serve --livereload
+
+
+git add .
+git commit -m "------"
+git push -u origin main

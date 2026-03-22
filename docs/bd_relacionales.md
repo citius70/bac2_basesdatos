@@ -6,6 +6,9 @@ Las bases de datos relacionales (SQL) organizan la información en **tablas**, c
 
 Por ejemplo, imaginemos que vamos a registrar todos los **cursos en el instituto y los profesores que los dictan**. Podríamos hacer una lista de cursos y poner el profesor a cada lado y estaría resuelto. Pero hay un pequeño problema, si un profesor dicta más de un curso, tendríamos su nombre repetido en el listado.
 
+![sql](img/basedatos.png){ width="60%" style="display:block; margin:auto;" }
+
+
 Y se pone peor, imagina que cometimos un error al escribir el nombre del profesor, para corregirlo, habría que hacerlo en todos los lugares donde aparece y si nos equivocamos una sola vez, estropeamos todo. Ahora imagina que también queremos registrar los estudiantes de cada curso, puesto que un curso tiene varios estudiantes, y un estudiante puede tomar varios cursos, entonces ya tenemos un problema.
 
 Esta es una tarea para las bases de datos SQL.

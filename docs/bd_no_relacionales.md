@@ -22,7 +22,7 @@ Existen tres tipos de bases de datos NoSQL, según la forma en que organizan la 
 
 2. **Documentales**: almacenan la información en archivos JSON, llamados documentos. Puesto que JSON es un estándar, son muy fáciles de administrar, y la organización de la información es muy flexible. El motor más conocido es **MongoDB**.
 
-![nosql](img/nosql2.png){ width="60%" style="display:block; margin:auto;" }
+![nosql](img/nosql.webp){ width="60%" style="display:block; margin:auto;" }
 
 3. **De grafos**: están basadas en la teoría matemática de grafos y organizan la información en nodos (vértices) que se relacionan entre sí (aristas). Cada nodo almacena información en formato clave valor mientras que las aristas representan las relaciones entre ellos. Se usan para sistemas de recomendación, conexiones entre amigos en redes sociales, anuncios o sistemas de rutas.
 

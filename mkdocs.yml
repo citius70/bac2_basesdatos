@@ -108,6 +108,7 @@ nav:
   - Ejercicio resuelto: ejercicio_resuelto.md
   - Ejercicio final: ejercicio_final.md
   - Documento en PDF: pdf/documento.pdf
+  - Presentaciones: presentaciones/conceptos_basicos.pdf 
 
 # ===============================
 #   OPCIONAL: CONFIGURACIÓN EXTRA
@@ -165,7 +166,7 @@ plugins:
         #debug_html: true
         #show_anchors: true
       # verbose: true
-      enabled: false
+      enabled: true
       stylesheet:
         - css/pdf-fix.css
       output_path: pdf/documento.pdf
