@@ -1,28 +1,35 @@
-name: Deploy MkDocs to GitHub Pages
+name: Desplegar MkDocs a GitHub Pages
+
 on:
   push:
     branches:
       - main
+  workflow_dispatch:  # Permite ejecución manual
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write  # Necesario para desplegar en GitHub Pages
+    
     steps:
-    - name: Checkout repository
+    - name: Clonar repositorio
       uses: actions/checkout@v3
-
-    - name: Setup Python
+      with:
+        fetch-depth: 0  # Obtiene todo el historial para versionado
+    
+    - name: Configurar Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
-
-    - name: Install dependencies
+        cache: 'pip'
+    
+    - name: Instalar dependencias
       run: |
-        pip install mkdocs-material \
-                    mkdocs-enumerate-headings-plugin \
-                    mkdocs-with-pdf \
-                    mkdocs-glightbox
-
-    - name: Deploy to GitHub Pages
-      run: mkdocs gh-deploy --force
+        pip install -r requirements.txt
+    
+    - name: Desplegar a GitHub Pages
+      run: mkdocs gh-deploy --force --verbose
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
