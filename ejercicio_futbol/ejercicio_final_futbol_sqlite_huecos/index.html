@@ -1,0 +1,2579 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Apuntes y recursos de SQL para 2º de Bachillerato">
+      
+      
+        <meta name="author" content="Alberto Durán Pérez">
+      
+      
+        <link rel="canonical" href="https://tusitio-ejemplo.github.io/ejercicio_futbol/ejercicio_final_futbol_sqlite_huecos/">
+      
+      
+        <link rel="prev" href="../../resumen/">
+      
+      
+        <link rel="next" href="../../ejercicio_restaurante/ejercicio_final_sqlite_huecos/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Ejercicio final (futbol) - Bases de Datos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Fira+Code:wght@400;500&display=swap">
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#actividad" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Bases de Datos" class="md-header__button md-logo" aria-label="Bases de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Bases de Datos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ejercicio final (futbol)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartir" aria-label="Compartir" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Bases de Datos" class="md-nav__button md-logo" aria-label="Bases de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Bases de Datos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bd_def/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Definición de bases de datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bd_relacionales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Bases de datos relacionales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bd_no_relacionales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Base de datos no relacionales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eleccion_tipo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Elección del tipo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Conceptos básicos de bases de datos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    6. Conceptos básicos de bases de datos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../conceptos_basicos_sql_new/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1. Conceptos básicos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../conceptos_basicos_preguntas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1.1. Preguntas sobre conceptos básicos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../conceptos_basicos_sql_ejercicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1.2. Ejercicios. Conceptos básicos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Comandos básicos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    7. Comandos básicos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../comandos_bd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.1. Introducción a los comandos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mysql_sqlite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.2. MySQL vs SQLite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ddl_bd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.3. Comandos DDL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dml_bd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.4. Comandos DML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.5. Comandos DQL
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    7.5. Comandos DQL
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.5. Comandos DQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dql_opciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.5.1. Opciones y cláusulas de SELECT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../funciones_agregacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Funciones de agregación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../join/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Relaciones entre tablas. JOIN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resumen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resumen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicio final (futbol)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicio final (futbol)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#disena-la-base-de-datos-de-la-fifa-federacion-internacional-de-futbol-asociacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diseña la base de datos de la FIFA (Federación Internacional de Fútbol Asociación)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Diseña la base de datos de la FIFA (Federación Internacional de Fútbol Asociación)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-para-completar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 Versión para completar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-analisis-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Análisis inicial
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-identificacion-de-problemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Identificación de problemas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-proceso-de-normalizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Proceso de normalización
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-esquema-entidad-relacion-er" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Esquema Entidad-Relación (ER)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-crear-la-base-de-datos-en-db-browser" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Crear la base de datos en DB Browser
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Crear la base de datos en DB Browser">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-crear-un-archivo-nuevo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1 — Crear un archivo nuevo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-abrir-la-pestana-de-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2 — Abrir la pestaña de SQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atencion-guardar-los-cambios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atención — Guardar los cambios
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-creacion-de-las-tablas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Creación de las tablas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Creación de las tablas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tabla-ligas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabla LIGAS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabla-equipos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabla EQUIPOS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabla-jugadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabla JUGADORES
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-introduccion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Introducción de datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Introducción de datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tabla-ligas_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabla LIGAS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabla-equipos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabla EQUIPOS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabla-jugadores_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabla JUGADORES
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-consultas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Consultas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Consultas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-consultas-con-una-sola-tabla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1. Consultas con una sola tabla
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-consultas-entre-dos-tablas-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2. Consultas entre dos tablas (JOIN)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-preguntas-para-responder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Preguntas para responder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-reto-adicional-nivel-avanzado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Reto adicional (nivel avanzado)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instrucciones-de-entrega" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📤 Instrucciones de Entrega
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Criterios de Evaluación
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ejercicio_restaurante/ejercicio_final_sqlite_huecos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicio final (restaurante)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pdf/documento.pdf" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documento en PDF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../presentaciones/conceptos_basicos.pdf" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#disena-la-base-de-datos-de-la-fifa-federacion-internacional-de-futbol-asociacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diseña la base de datos de la FIFA (Federación Internacional de Fútbol Asociación)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Diseña la base de datos de la FIFA (Federación Internacional de Fútbol Asociación)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-para-completar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 Versión para completar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-analisis-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Análisis inicial
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-identificacion-de-problemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Identificación de problemas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-proceso-de-normalizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Proceso de normalización
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-esquema-entidad-relacion-er" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Esquema Entidad-Relación (ER)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-crear-la-base-de-datos-en-db-browser" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Crear la base de datos en DB Browser
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Crear la base de datos en DB Browser">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-crear-un-archivo-nuevo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1 — Crear un archivo nuevo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-abrir-la-pestana-de-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2 — Abrir la pestaña de SQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atencion-guardar-los-cambios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atención — Guardar los cambios
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-creacion-de-las-tablas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Creación de las tablas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Creación de las tablas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tabla-ligas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabla LIGAS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabla-equipos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabla EQUIPOS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabla-jugadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabla JUGADORES
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-introduccion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Introducción de datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Introducción de datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tabla-ligas_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabla LIGAS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabla-equipos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabla EQUIPOS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabla-jugadores_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabla JUGADORES
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-consultas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Consultas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Consultas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-consultas-con-una-sola-tabla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1. Consultas con una sola tabla
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-consultas-entre-dos-tablas-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2. Consultas entre dos tablas (JOIN)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-preguntas-para-responder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Preguntas para responder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-reto-adicional-nivel-avanzado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Reto adicional (nivel avanzado)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instrucciones-de-entrega" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📤 Instrucciones de Entrega
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Criterios de Evaluación
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="actividad">Actividad:<a class="headerlink" href="#actividad" title="Permanent link">&para;</a></h1>
+<h2 id="disena-la-base-de-datos-de-la-fifa-federacion-internacional-de-futbol-asociacion">Diseña la base de datos de la FIFA (Federación Internacional de Fútbol Asociación)<a class="headerlink" href="#disena-la-base-de-datos-de-la-fifa-federacion-internacional-de-futbol-asociacion" title="Permanent link">&para;</a></h2>
+<h3 id="version-para-completar">📝 Versión para completar<a class="headerlink" href="#version-para-completar" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Rellena todos los huecos <code>______</code> antes de ejecutar el código en DB Browser. Si el código está incompleto, SQLite devolverá un error.</p>
+</blockquote>
+<hr />
+<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">&para;</a></h2>
+<p>Desarrollar el diseño de una base de datos relacional para organizar la información de la <strong>FIFA</strong>, analizando las relaciones entre jugadores, equipos y ligas, y aplicando técnicas de normalización. Usaremos <strong>DB Browser for SQLite</strong> para crear, poblar y consultar la base de datos.</p>
+<blockquote>
+<p>💻 <strong>Herramienta:</strong> <a href="https://sqlitebrowser.org/">DB Browser for SQLite</a> — gratuita, sin instalación de servidor, ideal para aprender SQL.</p>
+</blockquote>
+<hr />
+<h2 id="1-analisis-inicial">1. Análisis inicial<a class="headerlink" href="#1-analisis-inicial" title="Permanent link">&para;</a></h2>
+<p>La tabla original mezcla datos de jugadores, equipos, ligas y estadios. Identifica los problemas y completa el apartado 2 antes de continuar.</p>
+<table>
+<thead>
+<tr>
+<th>Jugador</th>
+<th>Equipo</th>
+<th>Liga</th>
+<th>País</th>
+<th>Posición</th>
+<th>Edad</th>
+<th>Año Fundación</th>
+<th>Estadio</th>
+<th>Capacidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Erling Haaland</td>
+<td>Manchester City</td>
+<td>Premier League</td>
+<td>Inglaterra</td>
+<td>Delantero</td>
+<td>23</td>
+<td>1880</td>
+<td>Etihad Stadium</td>
+<td>53.400</td>
+</tr>
+<tr>
+<td>Harry Kane</td>
+<td>Bayern Munich</td>
+<td>Bundesliga</td>
+<td>Alemania</td>
+<td>Delantero</td>
+<td>30</td>
+<td>1900</td>
+<td>Allianz Arena</td>
+<td>75.000</td>
+</tr>
+<tr>
+<td>İlkay Gündoğan</td>
+<td>FC Barcelona</td>
+<td>Liga EA Sports</td>
+<td>España</td>
+<td>Centrocampista</td>
+<td>33</td>
+<td>1899</td>
+<td>Spotify Camp Nou</td>
+<td>99.354</td>
+</tr>
+<tr>
+<td>Jordi Alba</td>
+<td>Inter Miami</td>
+<td>MLS</td>
+<td>Estados Unidos</td>
+<td>Defensa</td>
+<td>34</td>
+<td>2018</td>
+<td>DRV PNK Stadium</td>
+<td>18.000</td>
+</tr>
+<tr>
+<td>Jude Bellingham</td>
+<td>Real Madrid</td>
+<td>Liga EA Sports</td>
+<td>España</td>
+<td>Centrocampista</td>
+<td>20</td>
+<td>1902</td>
+<td>Santiago Bernabéu</td>
+<td>81.044</td>
+</tr>
+<tr>
+<td>Karim Benzema</td>
+<td>Real Madrid</td>
+<td>Liga EA Sports</td>
+<td>España</td>
+<td>Delantero</td>
+<td>36</td>
+<td>1902</td>
+<td>Santiago Bernabéu</td>
+<td>81.044</td>
+</tr>
+<tr>
+<td>Kevin De Bruyne</td>
+<td>Manchester City</td>
+<td>Premier League</td>
+<td>Inglaterra</td>
+<td>Centrocampista</td>
+<td>32</td>
+<td>1880</td>
+<td>Etihad Stadium</td>
+<td>53.400</td>
+</tr>
+<tr>
+<td>Kylian Mbappé</td>
+<td>Paris Saint-Germain</td>
+<td>Ligue 1</td>
+<td>Francia</td>
+<td>Delantero</td>
+<td>24</td>
+<td>1970</td>
+<td>Parc des Princes</td>
+<td>48.583</td>
+</tr>
+<tr>
+<td>Lautaro Martínez</td>
+<td>Inter de Milán</td>
+<td>Serie A</td>
+<td>Italia</td>
+<td>Delantero</td>
+<td>26</td>
+<td>1908</td>
+<td>San Siro</td>
+<td>75.923</td>
+</tr>
+<tr>
+<td>Lionel Messi</td>
+<td>Inter Miami</td>
+<td>MLS</td>
+<td>Estados Unidos</td>
+<td>Delantero</td>
+<td>36</td>
+<td>2018</td>
+<td>DRV PNK Stadium</td>
+<td>18.000</td>
+</tr>
+<tr>
+<td>Luka Modrić</td>
+<td>Real Madrid</td>
+<td>Liga EA Sports</td>
+<td>España</td>
+<td>Centrocampista</td>
+<td>38</td>
+<td>1902</td>
+<td>Santiago Bernabéu</td>
+<td>81.044</td>
+</tr>
+<tr>
+<td>Manuel Neuer</td>
+<td>Bayern Munich</td>
+<td>Bundesliga</td>
+<td>Alemania</td>
+<td>Portero</td>
+<td>37</td>
+<td>1900</td>
+<td>Allianz Arena</td>
+<td>75.000</td>
+</tr>
+<tr>
+<td>Mohamed Salah</td>
+<td>Liverpool</td>
+<td>Premier League</td>
+<td>Inglaterra</td>
+<td>Delantero</td>
+<td>31</td>
+<td>1892</td>
+<td>Anfield</td>
+<td>53.394</td>
+</tr>
+<tr>
+<td>Neymar Jr</td>
+<td>Al Hilal</td>
+<td>Saudi Pro League</td>
+<td>Arabia Saudita</td>
+<td>Delantero</td>
+<td>31</td>
+<td>1957</td>
+<td>Prince Faisal bin Fahd</td>
+<td>22.500</td>
+</tr>
+<tr>
+<td>Nicolò Barella</td>
+<td>Inter de Milán</td>
+<td>Serie A</td>
+<td>Italia</td>
+<td>Centrocampista</td>
+<td>27</td>
+<td>1908</td>
+<td>San Siro</td>
+<td>75.923</td>
+</tr>
+<tr>
+<td>Olivier Giroud</td>
+<td>AC Milan</td>
+<td>Serie A</td>
+<td>Italia</td>
+<td>Delantero</td>
+<td>37</td>
+<td>1899</td>
+<td>San Siro</td>
+<td>75.923</td>
+</tr>
+<tr>
+<td>Pedri</td>
+<td>FC Barcelona</td>
+<td>Liga EA Sports</td>
+<td>España</td>
+<td>Centrocampista</td>
+<td>21</td>
+<td>1899</td>
+<td>Spotify Camp Nou</td>
+<td>99.354</td>
+</tr>
+<tr>
+<td>Rafael Leão</td>
+<td>AC Milan</td>
+<td>Serie A</td>
+<td>Italia</td>
+<td>Extremo</td>
+<td>24</td>
+<td>1899</td>
+<td>San Siro</td>
+<td>75.923</td>
+</tr>
+<tr>
+<td>Robert Lewandowski</td>
+<td>FC Barcelona</td>
+<td>Liga EA Sports</td>
+<td>España</td>
+<td>Delantero</td>
+<td>35</td>
+<td>1899</td>
+<td>Spotify Camp Nou</td>
+<td>99.354</td>
+</tr>
+<tr>
+<td>Rodri</td>
+<td>Manchester City</td>
+<td>Premier League</td>
+<td>Inglaterra</td>
+<td>Centrocampista</td>
+<td>27</td>
+<td>1880</td>
+<td>Etihad Stadium</td>
+<td>53.400</td>
+</tr>
+<tr>
+<td>Sergio Busquets</td>
+<td>Inter Miami</td>
+<td>MLS</td>
+<td>Estados Unidos</td>
+<td>Centrocampista</td>
+<td>35</td>
+<td>2018</td>
+<td>DRV PNK Stadium</td>
+<td>18.000</td>
+</tr>
+<tr>
+<td>Thibaut Courtois</td>
+<td>Real Madrid</td>
+<td>Liga EA Sports</td>
+<td>España</td>
+<td>Portero</td>
+<td>31</td>
+<td>1902</td>
+<td>Santiago Bernabéu</td>
+<td>81.044</td>
+</tr>
+<tr>
+<td>Trent Alexander-Arnold</td>
+<td>Liverpool</td>
+<td>Premier League</td>
+<td>Inglaterra</td>
+<td>Defensa</td>
+<td>25</td>
+<td>1892</td>
+<td>Anfield</td>
+<td>53.394</td>
+</tr>
+<tr>
+<td>Virgil van Dijk</td>
+<td>Liverpool</td>
+<td>Premier League</td>
+<td>Inglaterra</td>
+<td>Defensa</td>
+<td>32</td>
+<td>1892</td>
+<td>Anfield</td>
+<td>53.394</td>
+</tr>
+<tr>
+<td>Vinicius Junior</td>
+<td>Real Madrid</td>
+<td>Liga EA Sports</td>
+<td>España</td>
+<td>Extremo</td>
+<td>23</td>
+<td>1902</td>
+<td>Santiago Bernabéu</td>
+<td>81.044</td>
+</tr>
+<tr>
+<td>Cristiano Ronaldo</td>
+<td>Al Nassr</td>
+<td>Saudi Pro League</td>
+<td>Arabia Saudita</td>
+<td>Delantero</td>
+<td>39</td>
+<td>1955</td>
+<td>Mrsool Park</td>
+<td>25.000</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-identificacion-de-problemas">2. Identificación de problemas<a class="headerlink" href="#2-identificacion-de-problemas" title="Permanent link">&para;</a></h2>
+<p>Completa cada problema detectado en la tabla original con un ejemplo concreto:</p>
+<ul>
+<li><strong>Duplicidad de datos:</strong> los campos <code>______</code> y <code>______</code> se repiten porque varios jugadores comparten equipo. Por ejemplo, el estadio <code>______</code> aparece __ veces.</li>
+<li><strong>Dependencia incorrecta:</strong> el estadio depende del <code>______</code>, no del <code>______</code>. Por tanto, no debería estar en la misma tabla que los jugadores.</li>
+<li><strong>Anomalía de actualización:</strong> si el Real Madrid cambia de estadio, habría que modificar __ filas.</li>
+<li><strong>Anomalía de inserción:</strong> no se puede añadir una <code>______</code> nueva sin que tenga al menos un <code>______</code> asociado.</li>
+<li><strong>Anomalía de borrado:</strong> si eliminamos a Neymar Jr, perderíamos también la información del equipo <code>______</code>.</li>
+<li><strong>Caso especial:</strong> los equipos <code>______</code> y <code>______</code> comparten el mismo estadio (<code>______</code>). ¿Es eso un problema en la tabla original? ¿Y en las tablas normalizadas? ______</li>
+</ul>
+<hr />
+<h2 id="3-proceso-de-normalizacion">3. Proceso de normalización<a class="headerlink" href="#3-proceso-de-normalizacion" title="Permanent link">&para;</a></h2>
+<p>Esta vez la información se separa en __ tablas.</p>
+<pre class="mermaid"><code>graph TD
+    BD["FIFA"]
+    TB1["Equipos"]
+    TB2["Jugadores"]
+    TB3["Ligas"]
+    BD --&gt; TB1
+    BD --&gt; TB2
+    BD --&gt; TB3
+    style BD fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style TB1 fill:#f8bbd0,stroke:#ad1457
+    style TB2 fill:#c8e6c9,stroke:#2e7d32
+    style TB3 fill:#bbdefb,stroke:#1565c0</code></pre>
+<p>Escribe sus nombres:</p>
+<ol>
+<li><code>______</code></li>
+<li><code>______</code></li>
+<li><code>______</code></li>
+</ol>
+<hr />
+<h2 id="4-esquema-entidad-relacion-er">4. Esquema Entidad-Relación (ER)<a class="headerlink" href="#4-esquema-entidad-relacion-er" title="Permanent link">&para;</a></h2>
+<p>Completa la descripción de las relaciones:</p>
+<ul>
+<li>Una <strong>liga</strong> puede agrupar ______ equipos → relación <strong>1:__</strong></li>
+<li>Un <strong>equipo</strong> puede tener ______ jugadores → relación <strong>1:__</strong></li>
+<li>Cada <strong>jugador</strong> pertenece a <strong><em>_</em>_ equipo y ese equipo participa en </strong>____ liga</li>
+</ul>
+<pre class="mermaid"><code>erDiagram
+direction LR
+    LIGAS   ||--o{ EQUIPOS  : agrupa
+    EQUIPOS ||--|{ JUGADORES : tiene
+
+    LIGAS {
+        INTEGER pk_liga PK
+        TEXT nombre
+        TEXT pais
+    }
+
+    EQUIPOS {
+        TEXT pk_equipo PK
+        TEXT nombre
+        TEXT estadio
+        INTEGER capacidad
+        INTEGER año_fundacion
+        INTEGER fk_liga FK
+    }
+
+    JUGADORES {
+        INTEGER pk_jugador PK
+        TEXT nombre
+        TEXT apellidos
+        TEXT posicion
+        INTEGER edad
+        TEXT fk_equipo FK
+    }</code></pre>
+<p>Completa la tabla de claves:</p>
+<table>
+<thead>
+<tr>
+<th>Entidad</th>
+<th>Clave primaria</th>
+<th>Principales atributos</th>
+<th>Clave foránea</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LIGAS</strong></td>
+<td><code>______</code></td>
+<td>nombre, pais</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>EQUIPOS</strong></td>
+<td><code>______</code></td>
+<td>nombre, estadio, capacidad, año_fundacion</td>
+<td><code>______</code></td>
+</tr>
+<tr>
+<td><strong>JUGADORES</strong></td>
+<td><code>______</code></td>
+<td>nombre, apellidos, posicion, edad</td>
+<td><code>______</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 Fíjate: en este ejercicio hay una novedad. La PK de EQUIPOS <strong>no es un número automático</strong>, sino un código de texto de 2 letras que asignaremos nosotros (RM, MC, BM, MI, AM, IM...). Esto es posible porque los códigos son únicos y los controlamos. La PK de LIGAS y JUGADORES sí serán numéricas y automáticas.</p>
+<p>⚠️ <strong>Atención con los códigos:</strong> <code>MI</code> = Inter Miami, <code>IM</code> = Inter de Milán, <code>AM</code> = AC Milan. Son parecidos, ¡no los confundas!</p>
+</blockquote>
+<hr />
+<h2 id="5-crear-la-base-de-datos-en-db-browser">5. Crear la base de datos en DB Browser<a class="headerlink" href="#5-crear-la-base-de-datos-en-db-browser" title="Permanent link">&para;</a></h2>
+<h3 id="paso-1-crear-un-archivo-nuevo">Paso 1 — Crear un archivo nuevo<a class="headerlink" href="#paso-1-crear-un-archivo-nuevo" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Abre <strong>DB Browser for SQLite</strong>.</li>
+<li>Haz clic en <strong>"Nueva base de datos"</strong>.</li>
+<li>Guarda el archivo como <code>fifa.db</code> en tu carpeta de trabajo.</li>
+</ol>
+<h3 id="paso-2-abrir-la-pestana-de-sql">Paso 2 — Abrir la pestaña de SQL<a class="headerlink" href="#paso-2-abrir-la-pestana-de-sql" title="Permanent link">&para;</a></h3>
+<p>Haz clic en la pestaña <strong>"Ejecutar SQL"</strong> (parte superior de la ventana). Aquí escribirás y ejecutarás todas las instrucciones SQL.</p>
+<h3 id="atencion-guardar-los-cambios">Atención — Guardar los cambios<a class="headerlink" href="#atencion-guardar-los-cambios" title="Permanent link">&para;</a></h3>
+<p>En DB Browser, los cambios no se guardan automáticamente. Haz clic en <strong>"Escribir cambios"</strong> (o Ctrl+S) cada vez que ejecutes instrucciones de modificación.</p>
+<blockquote>
+<p>⚠️ <strong>Nota SQLite:</strong> SQLite no usa <code>AUTO_INCREMENT</code> ni <code>VARCHAR</code>. Usa <code>INTEGER PRIMARY KEY</code> para claves numéricas automáticas y <code>TEXT</code> para textos y fechas.</p>
+</blockquote>
+<hr />
+<h2 id="6-creacion-de-las-tablas">6. Creación de las tablas<a class="headerlink" href="#6-creacion-de-las-tablas" title="Permanent link">&para;</a></h2>
+<p>Completa los huecos y ejecuta cada bloque por separado con <strong>▶ Ejecutar</strong> (F5).</p>
+<h3 id="tabla-ligas">Tabla LIGAS<a class="headerlink" href="#tabla-ligas" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">______</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">LIGAS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">pk_liga</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="n">______</span><span class="w">  </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">nombre</span><span class="w">  </span><span class="n">______</span><span class="w">  </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">pais</span><span class="w">    </span><span class="n">______</span>
+<span class="p">);</span>
+</code></pre></div>
+<h3 id="tabla-equipos">Tabla EQUIPOS<a class="headerlink" href="#tabla-equipos" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>💡 Aquí la PK es <code>TEXT</code>, no <code>INTEGER</code>, porque usamos códigos como 'RM', 'MC', 'BM', 'MI', 'AM', 'IM'...</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="n">______</span><span class="w"> </span><span class="n">EQUIPOS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">pk_equipo</span><span class="w">      </span><span class="nb">TEXT</span><span class="w">    </span><span class="n">______</span><span class="w">  </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">nombre</span><span class="w">         </span><span class="nb">TEXT</span><span class="w">    </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">estadio</span><span class="w">        </span><span class="n">______</span><span class="p">,</span>
+<span class="w">    </span><span class="n">capacidad</span><span class="w">      </span><span class="n">______</span><span class="p">,</span>
+<span class="w">    </span><span class="n">año_fundacion</span><span class="w">  </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">    </span><span class="n">fk_liga</span><span class="w">        </span><span class="n">______</span><span class="p">,</span>
+<span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">______</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">LIGAS</span><span class="p">(</span><span class="n">______</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div>
+<h3 id="tabla-jugadores">Tabla JUGADORES<a class="headerlink" href="#tabla-jugadores" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">______</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">pk_jugador</span><span class="w"> </span><span class="n">______</span><span class="w"> </span><span class="n">______</span><span class="w"> </span><span class="n">______</span><span class="p">,</span>
+<span class="w">    </span><span class="n">nombre</span><span class="w">     </span><span class="n">______</span><span class="w">  </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">apellidos</span><span class="w">  </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">posicion</span><span class="w">   </span><span class="n">______</span><span class="p">,</span>
+<span class="w">    </span><span class="n">edad</span><span class="w">       </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">    </span><span class="n">fk_equipo</span><span class="w">  </span><span class="n">______</span><span class="p">,</span>
+<span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">______</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">______</span><span class="p">(</span><span class="n">______</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>💡 Después de ejecutar cada <code>CREATE TABLE</code>, ve a la pestaña <strong>"Estructura de la base de datos"</strong> para comprobar que las tablas se han creado correctamente.</p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Entrega Nº 1</p>
+<p>Una vez que llegues a este punto, entrega el archivo <code>fifa.db</code> a través del Aula Virtual.</p>
+</div>
+<hr />
+<h2 id="7-introduccion-de-datos">7. Introducción de datos<a class="headerlink" href="#7-introduccion-de-datos" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>⚠️ <strong>Importante:</strong> ¿en qué orden debes ejecutar los <code>INSERT</code>? Marca el orden correcto:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Primero JUGADORES, luego EQUIPOS y LIGAS</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Primero LIGAS, luego EQUIPOS, luego JUGADORES</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> El orden no importa</li>
+</ul>
+<p><strong>¿Por qué?</strong> ______</p>
+</blockquote>
+<h3 id="tabla-ligas_1">Tabla LIGAS<a class="headerlink" href="#tabla-ligas_1" title="Permanent link">&para;</a></h3>
+<p>Completa los valores que faltan consultando la tabla original del apartado 1.<br />
+Recuerda: <code>pk_liga</code> se asigna automáticamente, no hace falta escribirlo.</p>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">LIGAS</span><span class="w"> </span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">pais</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;______&#39;</span><span class="p">,</span><span class="w">            </span><span class="s1">&#39;ESP&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;______&#39;</span><span class="p">,</span><span class="w">            </span><span class="s1">&#39;USA&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;______&#39;</span><span class="p">,</span><span class="w">            </span><span class="s1">&#39;SAU&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Premier League&#39;</span><span class="p">,</span><span class="w">    </span><span class="s1">&#39;______&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;______&#39;</span><span class="p">,</span><span class="w">            </span><span class="s1">&#39;FRA&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;______&#39;</span><span class="p">,</span><span class="w">            </span><span class="s1">&#39;DEU&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;______&#39;</span><span class="p">,</span><span class="w">            </span><span class="s1">&#39;ITA&#39;</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="tabla-equipos_1">Tabla EQUIPOS<a class="headerlink" href="#tabla-equipos_1" title="Permanent link">&para;</a></h3>
+<p>Completa los códigos de equipo (<code>pk_equipo</code>) y los números de liga (<code>fk_liga</code>) según la tabla de LIGAS insertada arriba.</p>
+<blockquote>
+<p>⚠️ Recuerda: <code>MI</code> = Inter Miami, <code>IM</code> = Inter de Milán, <code>AM</code> = AC Milan.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">_________</span><span class="w"> </span><span class="p">(</span><span class="n">pk_equipo</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">________</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">capacidad</span><span class="p">,</span><span class="w"> </span><span class="n">año_fundacion</span><span class="p">,</span><span class="w"> </span><span class="n">fk_liga</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;__&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Real Madrid&#39;</span><span class="p">,</span><span class="w">           </span><span class="s1">&#39;Santiago Bernabéu&#39;</span><span class="p">,</span><span class="w">      </span><span class="mi">81044</span><span class="p">,</span><span class="w"> </span><span class="mi">1902</span><span class="p">,</span><span class="w"> </span><span class="n">__</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;__&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Inter Miami&#39;</span><span class="p">,</span><span class="w">           </span><span class="s1">&#39;DRV PNK Stadium&#39;</span><span class="p">,</span><span class="w">        </span><span class="mi">18000</span><span class="p">,</span><span class="w"> </span><span class="mi">2018</span><span class="p">,</span><span class="w"> </span><span class="n">__</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;__&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Al Nassr&#39;</span><span class="p">,</span><span class="w">              </span><span class="s1">&#39;Mrsool Park&#39;</span><span class="p">,</span><span class="w">            </span><span class="mi">25000</span><span class="p">,</span><span class="w"> </span><span class="mi">1955</span><span class="p">,</span><span class="w"> </span><span class="n">__</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;__&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Manchester City&#39;</span><span class="p">,</span><span class="w">       </span><span class="s1">&#39;Etihad Stadium&#39;</span><span class="p">,</span><span class="w">         </span><span class="mi">53400</span><span class="p">,</span><span class="w"> </span><span class="mi">1880</span><span class="p">,</span><span class="w"> </span><span class="n">__</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;__&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;FC Barcelona&#39;</span><span class="p">,</span><span class="w">          </span><span class="s1">&#39;Spotify Camp Nou&#39;</span><span class="p">,</span><span class="w">       </span><span class="mi">99354</span><span class="p">,</span><span class="w"> </span><span class="mi">1899</span><span class="p">,</span><span class="w"> </span><span class="n">__</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;__&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Paris Saint-Germain&#39;</span><span class="p">,</span><span class="w">   </span><span class="s1">&#39;Parc des Princes&#39;</span><span class="p">,</span><span class="w">       </span><span class="mi">48583</span><span class="p">,</span><span class="w"> </span><span class="mi">1970</span><span class="p">,</span><span class="w"> </span><span class="n">__</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;__&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Bayern Munich&#39;</span><span class="p">,</span><span class="w">         </span><span class="s1">&#39;Allianz Arena&#39;</span><span class="p">,</span><span class="w">          </span><span class="mi">75000</span><span class="p">,</span><span class="w"> </span><span class="mi">1900</span><span class="p">,</span><span class="w"> </span><span class="n">__</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;__&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Liverpool&#39;</span><span class="p">,</span><span class="w">             </span><span class="s1">&#39;Anfield&#39;</span><span class="p">,</span><span class="w">                </span><span class="mi">53394</span><span class="p">,</span><span class="w"> </span><span class="mi">1892</span><span class="p">,</span><span class="w"> </span><span class="n">__</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;__&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Al Hilal&#39;</span><span class="p">,</span><span class="w">              </span><span class="s1">&#39;Prince Faisal bin Fahd&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">22500</span><span class="p">,</span><span class="w"> </span><span class="mi">1957</span><span class="p">,</span><span class="w"> </span><span class="n">__</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;__&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;AC Milan&#39;</span><span class="p">,</span><span class="w">              </span><span class="s1">&#39;San Siro&#39;</span><span class="p">,</span><span class="w">               </span><span class="mi">75923</span><span class="p">,</span><span class="w"> </span><span class="mi">1899</span><span class="p">,</span><span class="w"> </span><span class="n">__</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;__&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Inter de Milán&#39;</span><span class="p">,</span><span class="w">        </span><span class="s1">&#39;San Siro&#39;</span><span class="p">,</span><span class="w">               </span><span class="mi">75923</span><span class="p">,</span><span class="w"> </span><span class="mi">1908</span><span class="p">,</span><span class="w"> </span><span class="n">__</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="tabla-jugadores_1">Tabla JUGADORES<a class="headerlink" href="#tabla-jugadores_1" title="Permanent link">&para;</a></h3>
+<p>Completa el <code>fk_equipo</code> de cada jugador con el código de 2 letras del equipo correspondiente.<br />
+Recuerda: <code>pk_jugador</code> se asigna automáticamente.</p>
+<blockquote>
+<p>⚠️ Atención: <code>MI</code> = Inter Miami, <code>IM</code> = Inter de Milán, <code>AM</code> = AC Milan. ¡No los confundas!</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">JUGADORES</span><span class="w"> </span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">apellidos</span><span class="p">,</span><span class="w"> </span><span class="n">posicion</span><span class="p">,</span><span class="w"> </span><span class="n">edad</span><span class="p">,</span><span class="w"> </span><span class="n">_________</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Karim&#39;</span><span class="p">,</span><span class="w">    </span><span class="s1">&#39;Benzema&#39;</span><span class="p">,</span><span class="w">          </span><span class="s1">&#39;Delantero&#39;</span><span class="p">,</span><span class="w">      </span><span class="mi">36</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Real Madrid</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Lionel&#39;</span><span class="p">,</span><span class="w">   </span><span class="s1">&#39;Messi&#39;</span><span class="p">,</span><span class="w">            </span><span class="s1">&#39;Delantero&#39;</span><span class="p">,</span><span class="w">      </span><span class="mi">36</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Inter Miami</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Cristiano&#39;</span><span class="p">,</span><span class="s1">&#39;Ronaldo&#39;</span><span class="p">,</span><span class="w">          </span><span class="s1">&#39;Delantero&#39;</span><span class="p">,</span><span class="w">      </span><span class="mi">39</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Al Nassr</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Kevin&#39;</span><span class="p">,</span><span class="w">    </span><span class="s1">&#39;De Bruyne&#39;</span><span class="p">,</span><span class="w">        </span><span class="s1">&#39;Centrocampista&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Manchester City</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Robert&#39;</span><span class="p">,</span><span class="w">   </span><span class="s1">&#39;Lewandowski&#39;</span><span class="p">,</span><span class="w">      </span><span class="s1">&#39;Delantero&#39;</span><span class="p">,</span><span class="w">      </span><span class="mi">35</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- FC Barcelona</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Kylian&#39;</span><span class="p">,</span><span class="w">   </span><span class="s1">&#39;Mbappé&#39;</span><span class="p">,</span><span class="w">           </span><span class="s1">&#39;Delantero&#39;</span><span class="p">,</span><span class="w">      </span><span class="mi">24</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Paris Saint-Germain</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Erling&#39;</span><span class="p">,</span><span class="w">   </span><span class="s1">&#39;Haaland&#39;</span><span class="p">,</span><span class="w">          </span><span class="s1">&#39;Delantero&#39;</span><span class="p">,</span><span class="w">      </span><span class="mi">23</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Manchester City</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Vinicius&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Junior&#39;</span><span class="p">,</span><span class="w">           </span><span class="s1">&#39;Extremo&#39;</span><span class="p">,</span><span class="w">        </span><span class="mi">23</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Real Madrid</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Harry&#39;</span><span class="p">,</span><span class="w">    </span><span class="s1">&#39;Kane&#39;</span><span class="p">,</span><span class="w">             </span><span class="s1">&#39;Delantero&#39;</span><span class="p">,</span><span class="w">      </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Bayern Munich</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Mohamed&#39;</span><span class="p">,</span><span class="w">  </span><span class="s1">&#39;Salah&#39;</span><span class="p">,</span><span class="w">            </span><span class="s1">&#39;Delantero&#39;</span><span class="p">,</span><span class="w">      </span><span class="mi">31</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Liverpool</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Luka&#39;</span><span class="p">,</span><span class="w">     </span><span class="s1">&#39;Modrić&#39;</span><span class="p">,</span><span class="w">           </span><span class="s1">&#39;Centrocampista&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">38</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Real Madrid</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Jude&#39;</span><span class="p">,</span><span class="w">     </span><span class="s1">&#39;Bellingham&#39;</span><span class="p">,</span><span class="w">       </span><span class="s1">&#39;Centrocampista&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Real Madrid</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Rodri&#39;</span><span class="p">,</span><span class="w">    </span><span class="s1">&#39;Hernández&#39;</span><span class="p">,</span><span class="w">        </span><span class="s1">&#39;Centrocampista&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Manchester City</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Virgil&#39;</span><span class="p">,</span><span class="w">   </span><span class="s1">&#39;van Dijk&#39;</span><span class="p">,</span><span class="w">         </span><span class="s1">&#39;Defensa&#39;</span><span class="p">,</span><span class="w">        </span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Liverpool</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Pedro&#39;</span><span class="p">,</span><span class="w">    </span><span class="s1">&#39;González (Pedri)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Centrocampista&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- FC Barcelona</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Manuel&#39;</span><span class="p">,</span><span class="w">   </span><span class="s1">&#39;Neuer&#39;</span><span class="p">,</span><span class="w">            </span><span class="s1">&#39;Portero&#39;</span><span class="p">,</span><span class="w">        </span><span class="mi">37</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Bayern Munich</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Thibaut&#39;</span><span class="p">,</span><span class="w">  </span><span class="s1">&#39;Courtois&#39;</span><span class="p">,</span><span class="w">         </span><span class="s1">&#39;Portero&#39;</span><span class="p">,</span><span class="w">        </span><span class="mi">31</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Real Madrid</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Trent&#39;</span><span class="p">,</span><span class="w">    </span><span class="s1">&#39;Alexander-Arnold&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Defensa&#39;</span><span class="p">,</span><span class="w">        </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Liverpool</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;İlkay&#39;</span><span class="p">,</span><span class="w">    </span><span class="s1">&#39;Gündoğan&#39;</span><span class="p">,</span><span class="w">         </span><span class="s1">&#39;Centrocampista&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- FC Barcelona</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Neymar&#39;</span><span class="p">,</span><span class="w">   </span><span class="s1">&#39;Jr&#39;</span><span class="p">,</span><span class="w">               </span><span class="s1">&#39;Delantero&#39;</span><span class="p">,</span><span class="w">      </span><span class="mi">31</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Al Hilal</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Sergio&#39;</span><span class="p">,</span><span class="w">   </span><span class="s1">&#39;Busquets&#39;</span><span class="p">,</span><span class="w">         </span><span class="s1">&#39;Centrocampista&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Inter Miami</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Jordi&#39;</span><span class="p">,</span><span class="w">    </span><span class="s1">&#39;Alba&#39;</span><span class="p">,</span><span class="w">             </span><span class="s1">&#39;Defensa&#39;</span><span class="p">,</span><span class="w">        </span><span class="mi">34</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Inter Miami</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Rafael&#39;</span><span class="p">,</span><span class="w">   </span><span class="s1">&#39;Leão&#39;</span><span class="p">,</span><span class="w">             </span><span class="s1">&#39;Extremo&#39;</span><span class="p">,</span><span class="w">        </span><span class="mi">24</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- AC Milan</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Olivier&#39;</span><span class="p">,</span><span class="w">  </span><span class="s1">&#39;Giroud&#39;</span><span class="p">,</span><span class="w">           </span><span class="s1">&#39;Delantero&#39;</span><span class="p">,</span><span class="w">      </span><span class="mi">37</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- AC Milan</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Lautaro&#39;</span><span class="p">,</span><span class="w">  </span><span class="s1">&#39;Martínez&#39;</span><span class="p">,</span><span class="w">         </span><span class="s1">&#39;Delantero&#39;</span><span class="p">,</span><span class="w">      </span><span class="mi">26</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">),</span><span class="w">  </span><span class="c1">-- Inter de Milán</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;Nicolò&#39;</span><span class="p">,</span><span class="w">   </span><span class="s1">&#39;Barella&#39;</span><span class="p">,</span><span class="w">          </span><span class="s1">&#39;Centrocampista&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">-- Inter de Milán</span>
+</code></pre></div>
+<blockquote>
+<p>💡 Después de insertar los datos, ve a la pestaña <strong>"Explorar datos"</strong>, selecciona cada tabla y comprueba que los registros son correctos.</p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Entrega Nº 2</p>
+<p>Una vez que llegues a este punto, entrega el archivo <code>fifa.db</code> a través del Aula Virtual.</p>
+</div>
+<hr />
+<h2 id="8-consultas">8. Consultas<a class="headerlink" href="#8-consultas" title="Permanent link">&para;</a></h2>
+<p>Completa los huecos y ejecuta cada consulta en la pestaña <strong>"Ejecutar SQL"</strong>.</p>
+<h3 id="81-consultas-con-una-sola-tabla">8.1. Consultas con una sola tabla<a class="headerlink" href="#81-consultas-con-una-sola-tabla" title="Permanent link">&para;</a></h3>
+<p><strong>Consulta 1 — Jugadores mayores de 30 años:</strong>
+<div class="highlight"><pre><span></span><code><span class="n">______</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">apellidos</span><span class="p">,</span><span class="w"> </span><span class="n">edad</span>
+<span class="n">______</span><span class="w"> </span><span class="n">JUGADORES</span>
+<span class="n">______</span><span class="w"> </span><span class="n">edad</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">30</span><span class="p">;</span>
+</code></pre></div></p>
+<p><strong>Consulta 2 — Jugadores cuyo apellido empieza por la letra "M":</strong>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">apellidos</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">posicion</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">______</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">apellidos</span><span class="w"> </span><span class="n">______</span><span class="w"> </span><span class="s1">&#39;M%&#39;</span><span class="p">;</span>
+</code></pre></div></p>
+<p><strong>Consulta 3 — Estadios con capacidad entre 10.000 y 30.000 espectadores:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">estadio</span><span class="p">,</span><span class="w"> </span><span class="n">______</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">EQUIPOS</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">capacidad</span><span class="w"> </span><span class="n">______</span><span class="w"> </span><span class="mi">10000</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">______</span><span class="p">;</span>
+</code></pre></div></p>
+<p><strong>Consulta 4 — Media de edad de todos los jugadores:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">______</span><span class="p">(</span><span class="n">edad</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">media_edad</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">______</span><span class="p">;</span>
+</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Entrega Nº 3</p>
+<p>Una vez que llegues a este punto, entrega el archivo <code>fifa.db</code> a través del Aula Virtual.</p>
+</div>
+<h3 id="82-consultas-entre-dos-tablas-join">8.2. Consultas entre dos tablas (JOIN)<a class="headerlink" href="#82-consultas-entre-dos-tablas-join" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>💡 La clave para unir tablas: <code>fk_</code> de una tabla = <code>pk_</code> de la otra.<br />
+Patrón: <code>JOIN tabla2 ON tabla1.fk_campo = tabla2.pk_campo</code></p>
+</blockquote>
+<p><strong>Consulta 5 — Nombre y apellidos del jugador junto al estadio en el que juega:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">apellidos</span><span class="p">,</span><span class="w"> </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">______</span><span class="p">,</span><span class="w"> </span><span class="n">EQUIPOS</span><span class="p">.</span><span class="n">______</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">______</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">EQUIPOS</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">______</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EQUIPOS</span><span class="p">.</span><span class="n">______</span><span class="p">;</span>
+</code></pre></div></p>
+<p><strong>Consulta 6 — Jugadores cuyo estadio tiene más de 50.000 espectadores:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">apellidos</span><span class="p">,</span><span class="w"> </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">EQUIPOS</span><span class="p">.</span><span class="n">estadio</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">JUGADORES</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">______</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">fk_equipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">______</span><span class="p">.</span><span class="n">pk_equipo</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">______</span><span class="p">.</span><span class="n">______</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50000</span><span class="p">;</span>
+</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Entrega Nº 4</p>
+<p>Una vez que llegues a este punto, entrega el archivo <code>fifa.db</code> a través del Aula Virtual.</p>
+</div>
+<hr />
+<h2 id="9-preguntas-para-responder">9. Preguntas para responder<a class="headerlink" href="#9-preguntas-para-responder" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>¿Cuántos jugadores tienen más de 30 años? ¿Cuáles son?<br />
+   → ______</p>
+</li>
+<li>
+<p>¿Qué estadios tienen entre 10.000 y 30.000 espectadores?<br />
+   → ______</p>
+</li>
+<li>
+<p>¿Qué ocurre si intentas insertar un jugador con <code>fk_equipo = 'XX'</code> (un código que no existe)? Pruébalo y explica el resultado.<br />
+   → ______</p>
+</li>
+<li>
+<p>En este ejercicio hay 3 tablas en vez de 2. ¿Por qué fue necesario separar LIGAS de EQUIPOS? ¿Qué problema se evita?<br />
+   → ______</p>
+</li>
+<li>
+<p>Si la Premier League cambia de nombre, ¿cuántas filas hay que modificar con las tablas normalizadas? ¿Y cuántas hubiera habido en la tabla original?<br />
+   → ______</p>
+</li>
+<li>
+<p>AC Milan e Inter de Milán comparten el estadio San Siro. ¿Cómo se refleja esto en la tabla EQUIPOS? ¿Supone algún problema para la integridad de los datos?<br />
+   → ______</p>
+</li>
+</ol>
+<hr />
+<h2 id="10-reto-adicional-nivel-avanzado">10. Reto adicional (nivel avanzado)<a class="headerlink" href="#10-reto-adicional-nivel-avanzado" title="Permanent link">&para;</a></h2>
+<p>Completa esta consulta que une las <strong>tres tablas</strong> a la vez (jugador + equipo + liga):</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">apellidos</span><span class="w">  </span><span class="k">AS</span><span class="w"> </span><span class="n">______</span><span class="p">,</span>
+<span class="w">       </span><span class="n">EQUIPOS</span><span class="p">.</span><span class="n">______</span><span class="w">        </span><span class="k">AS</span><span class="w"> </span><span class="n">equipo</span><span class="p">,</span>
+<span class="w">       </span><span class="n">______</span><span class="p">.</span><span class="n">nombre</span><span class="w">         </span><span class="k">AS</span><span class="w"> </span><span class="n">liga</span><span class="p">,</span>
+<span class="w">       </span><span class="n">LIGAS</span><span class="p">.</span><span class="n">______</span><span class="w">          </span><span class="k">AS</span><span class="w"> </span><span class="n">pais</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">______</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">EQUIPOS</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">______</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">EQUIPOS</span><span class="p">.</span><span class="n">______</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">______</span><span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">EQUIPOS</span><span class="p">.</span><span class="n">fk_liga</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">______</span><span class="p">.</span><span class="n">pk_liga</span><span class="p">;</span>
+</code></pre></div>
+<p>Escribe tú mismo una consulta para obtener <strong>cuántos jugadores tiene cada equipo</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Tu consulta aquí:</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Entrega Nº 5</p>
+<p>Una vez que llegues a este punto, entrega el archivo <code>fifa.db</code> a través del Aula Virtual.</p>
+</div>
+<hr />
+<h2 id="instrucciones-de-entrega">📤 Instrucciones de Entrega<a class="headerlink" href="#instrucciones-de-entrega" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Archivo <code>.db</code>:</strong> Entrega el fichero <code>fifa.db</code> generado con DB Browser (entregas parciales según se indica arriba).</li>
+<li><strong>Este documento:</strong> Entrega este archivo con todos los huecos rellenados.</li>
+<li><strong>Capturas de pantalla:</strong> Adjunta capturas de las tres tablas en "Explorar datos" y de al menos 3 consultas ejecutadas.</li>
+<li><strong>Plazo:</strong> Según se indique en Moodle.</li>
+<li><strong>Puntuación máxima:</strong> <strong>10 puntos</strong></li>
+</ul>
+<hr />
+<h2 id="criterios-de-evaluacion">✅ Criterios de Evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Puntos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Huecos de <code>CREATE TABLE</code> correctos (tipos, PK, FK)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Huecos de <code>INSERT</code> correctos (valores y claves foráneas)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Consultas simples completadas correctamente (8.1)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Consultas con <code>JOIN</code> completadas correctamente (8.2)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Preguntas respondidas con coherencia</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Reto adicional (opcional)</td>
+<td>+1</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>10</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../../resumen/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Resumen">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Resumen
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../ejercicio_restaurante/ejercicio_final_sqlite_huecos/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Ejercicio final (restaurante)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Ejercicio final (restaurante)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/tu_usuario" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:alberto@example.com" target="_blank" rel="noopener" title="Contacto" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20 8-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tabs.sticky", "navigation.footer", "navigation.indexes", "navigation.tracking", "footer.social", "footer.icons", "search.suggestions", "search.share", "content.code.copy", "content.action.edit", "content.tabs.link", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

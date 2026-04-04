@@ -2,90 +2,106 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://tusitio-ejemplo.github.io/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/bd_def/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/bd_no_relacionales/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/bd_relacionales/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/comandos_bd/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/conceptos_basicos_preguntas/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/conceptos_basicos_sql/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/conceptos_basicos_sql_ejercicios/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/conceptos_basicos_sql_new/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/ddl_bd/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/dml_bd/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/dql/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/dql_opciones/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/ejercicio1/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/ejercicio2/</loc>
-         <lastmod>2026-03-22</lastmod>
-    </url>
-    <url>
-         <loc>https://tusitio-ejemplo.github.io/ejercicio_final/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/ejercicio_resuelto/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/eleccion_tipo/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/funciones_agregacion/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/introduccion/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/join/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
+    </url>
+    <url>
+         <loc>https://tusitio-ejemplo.github.io/mysql_sqlite/</loc>
+         <lastmod>2026-04-04</lastmod>
     </url>
     <url>
          <loc>https://tusitio-ejemplo.github.io/resumen/</loc>
-         <lastmod>2026-03-22</lastmod>
+         <lastmod>2026-04-04</lastmod>
+    </url>
+    <url>
+         <loc>https://tusitio-ejemplo.github.io/ejercicio_futbol/ejercicio_final_futbol_sqlite_huecos/</loc>
+         <lastmod>2026-04-04</lastmod>
+    </url>
+    <url>
+         <loc>https://tusitio-ejemplo.github.io/ejercicio_restaurante/ejercicio_final/</loc>
+         <lastmod>2026-04-04</lastmod>
+    </url>
+    <url>
+         <loc>https://tusitio-ejemplo.github.io/ejercicio_restaurante/ejercicio_final_sqlite/</loc>
+         <lastmod>2026-04-04</lastmod>
+    </url>
+    <url>
+         <loc>https://tusitio-ejemplo.github.io/ejercicio_restaurante/ejercicio_final_sqlite_huecos/</loc>
+         <lastmod>2026-04-04</lastmod>
     </url>
 </urlset>
