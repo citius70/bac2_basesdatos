@@ -97,16 +97,20 @@ nav:
       - 6.1.2. Ejercicios. Conceptos básicos: conceptos_basicos_sql_ejercicios.md
   - 7. Comandos básicos:
       - 7.1. Introducción a los comandos: comandos_bd.md
-      - 7.2. Comandos DDL: ddl_bd.md
-      - 7.3. Comandos DML: dml_bd.md
-      - 7.4. Comandos DQL: 
-        - 7.4. Comandos DQL: dql.md
-        - 7.4.1. Opciones y cláusulas de SELECT: dql_opciones.md
+      - 7.2. MySQL vs SQLite: mysql_sqlite.md
+      - 7.3. Comandos DDL: ddl_bd.md
+      - 7.4. Comandos DML: dml_bd.md
+      - 7.5. Comandos DQL: 
+        - 7.5. Comandos DQL: dql.md
+        - 7.5.1. Opciones y cláusulas de SELECT: dql_opciones.md
   - 8. Funciones de agregación: funciones_agregacion.md
   - 9. Relaciones entre tablas. JOIN : join.md
   - Resumen: resumen.md
-  - Ejercicio resuelto: ejercicio_resuelto.md
-  - Ejercicio final: ejercicio_final.md
+  # - Ejercicio resuelto: ejercicio_resuelto.md
+  - Ejercicio final (futbol): ejercicio_futbol/ejercicio_final_futbol_sqlite_huecos.md
+  # - Ejercicio final: ejercicio_restaurante/ejercicio_final.md
+  # - Ejercicio final: ejercicio_restaurante/ejercicio_final_sqlite.md
+  - Ejercicio final (restaurante): ejercicio_restaurante/ejercicio_final_sqlite_huecos.md
   - Documento en PDF: pdf/documento.pdf
   - Presentaciones: presentaciones/conceptos_basicos.pdf 
 
@@ -166,7 +170,7 @@ plugins:
         #debug_html: true
         #show_anchors: true
       # verbose: true
-      enabled: true
+      enabled: false
       stylesheet:
         - css/pdf-fix.css
       output_path: pdf/documento.pdf

@@ -18,6 +18,8 @@
         <link rel="prev" href="../ejercicio_resuelto/">
       
       
+        <link rel="next" href="../ejercicio_final_dbbrowser/">
+      
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
@@ -976,12 +978,56 @@
   
   
     <li class="md-nav__item">
+      <a href="../ejercicio_final_dbbrowser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ejercicio final
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../pdf/documento.pdf" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Documento en PDF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../presentaciones/conceptos_basicos.pdf" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentaciones
     
   </span>
   
@@ -1154,7 +1200,7 @@
 <th>Popularidad</th>
 <th>Cocinero</th>
 <th>Edad</th>
-<th>Alta/Baja</th>
+<th>Estado</th>
 <th>Categoría gastronómica</th>
 </tr>
 </thead>
@@ -1186,7 +1232,7 @@
 <td>4,8</td>
 <td>Carmen</td>
 <td>47</td>
-<td>Alta</td>
+<td>Baja</td>
 <td>Mediterránea</td>
 </tr>
 <tr>
@@ -1226,7 +1272,7 @@
 <td>4,4</td>
 <td>Carmen</td>
 <td>47</td>
-<td>Alta</td>
+<td>Baja</td>
 <td>Mediterránea</td>
 </tr>
 <tr>
@@ -1266,7 +1312,7 @@
 <td>4,2</td>
 <td>Carmen</td>
 <td>47</td>
-<td>Alta</td>
+<td>Baja</td>
 <td>Griega</td>
 </tr>
 <tr>
@@ -1296,7 +1342,7 @@
 <td>4,4</td>
 <td>Carmen</td>
 <td>47</td>
-<td>Alta</td>
+<td>Baja</td>
 <td>Peruana</td>
 </tr>
 <tr>
@@ -1320,12 +1366,12 @@
 </ul>
 <hr />
 <h2 id="3-proceso-de-normalizacion">3. Proceso de normalización<a class="headerlink" href="#3-proceso-de-normalizacion" title="Permanent link">&para;</a></h2>
-<p>Se separa la información en tres tablas: Plato, Cocinero, CategoríaGastronómica.</p>
+<p>Se separa la información en tres tablas: Platos, Cocineros, Categorías.</p>
 <pre class="mermaid"><code>graph TD
     BD["Restaurante Internacional"]
     TB1["Platos"]
     TB2["Cocineros"]
-    TB3["CategoríaGastronómica"]
+    TB3["Categorias"]
     BD --&gt; TB1
     BD --&gt; TB2
     BD --&gt; TB3
@@ -1344,29 +1390,29 @@
 <h2 id="5-esquema-propuesto">5. Esquema propuesto<a class="headerlink" href="#5-esquema-propuesto" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>erDiagram
 direction LR
-    COCINERO ||--|{ PLATO : elabora
-    CATEGORIA_GASTRONOMICA ||--|{ PLATO : pertenece
+    COCINEROS ||--|{ PLATO : elabora
+    CATEGORIA ||--|{ PLATO : pertenece
 
-    COCINERO {
-        int id_cocinero PK
+    COCINEROS {
+        int pk_cocinero PK
         string nombre
         int edad
-        boolean activo
+        boolean estado
     }
 
-    CATEGORIA_GASTRONOMICA {
-        int id_categoria PK
+    CATEGORIAS {
+        int pk_categoria PK
         string nombre
     }
 
     PLATO {
-        int id_plato PK
+        int pk_plato PK
         string nombre
         float precio
         int tiempo_preparacion
         float popularidad
-        int id_cocinero_fk FK
-        int id_categoria_fk FK
+        int cocinero_fk FK
+        int categoria_fk FK
     }</code></pre>
 <table>
 <thead>
@@ -1379,13 +1425,13 @@ direction LR
 </thead>
 <tbody>
 <tr>
-<td><strong>COCINERO</strong></td>
-<td>id_cocinero</td>
-<td>nombre, edad, activo</td>
+<td><strong>COCINEROS</strong></td>
+<td>pk_cocinero</td>
+<td>nombre, edad, estado</td>
 <td></td>
 </tr>
 <tr>
-<td><strong>CATEGORIA_GASTRONOMICA</strong></td>
+<td><strong>CATEGORIAS</strong></td>
 <td>id_categoria</td>
 <td>nombre (Italiana, Japonesa...)</td>
 <td></td>
@@ -1541,6 +1587,22 @@ direction LR
             </div>
           </a>
         
+        
+          
+          <a href="../ejercicio_final_dbbrowser/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Ejercicio final">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Ejercicio final
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
         
       </nav>
     
