@@ -170,7 +170,7 @@ plugins:
         #debug_html: true
         #show_anchors: true
       # verbose: true
-      enabled: false
+      enabled: true
       stylesheet:
         - css/pdf-fix.css
       output_path: pdf/documento.pdf
