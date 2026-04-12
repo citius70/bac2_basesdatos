@@ -189,7 +189,7 @@ Imagina que tenemos una tabla `JUGADORES`:
       }
   ```
  
-y queremos relacionarla con la tabla EQUIPOS. Para ello debemos amodificar la tabla `JUGADORES` creando un campo FOREIGN KEY nuevo (`ìd_equipo_fk`) que hará de conexión con la tabla `EQUIPOS`, a través de su PRIMARY KEY `id_equipo`.
+y queremos relacionarla con la tabla EQUIPOS. Para ello debemos modificar la tabla `JUGADORES` creando un campo FOREIGN KEY nuevo (`ìd_equipo_fk`) que hará de conexión con la tabla `EQUIPOS`, a través de su PRIMARY KEY `id_equipo`.
 
   ```mermaid
   erDiagram
