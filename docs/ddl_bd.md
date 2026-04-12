@@ -191,15 +191,15 @@ Imagina que tenemos una tabla `JUGADORES`:
  
 y queremos relacionarla con la tabla EQUIPOS. Para ello debemos modificar la tabla `JUGADORES` creando un campo FOREIGN KEY nuevo (`ìd_equipo_fk`) que hará de conexión con la tabla `EQUIPOS`, a través de su PRIMARY KEY `id_equipo`.
 
-  ```mermaid
-  erDiagram
-      JUGADORES {
-          int id_jugador PK "AUTO_INCREMENT"
-          varchar(50) apellido "NOT_NULL"
-          varchar(30) nombre "NOT_NULL"
-          int id_equipo_fk FK "Equipos: id_equipos"
-      }
-  ```
+```mermaid
+erDiagram
+    JUGADORES {
+        int id_jugador PK "AUTO_INCREMENT"
+        varchar(50) apellido "NOT_NULL"
+        varchar(30) nombre "NOT_NULL"
+        int id_equipo_fk FK "Equipos: id_equipos"
+    }
+```
 
 Las tablas `EQUIPOS` y `JUGADORES` están conectadas por las campos PK de `EQUIPOS` (id_equipo) y el campo FK de `JUGADORES` (id_equipo_fk).
 

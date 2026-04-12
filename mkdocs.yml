@@ -112,7 +112,9 @@ nav:
   # - Ejercicio final: ejercicio_restaurante/ejercicio_final_sqlite.md
   - Ejercicio final (restaurante): ejercicio_restaurante/ejercicio_final_sqlite_huecos.md
   - Documento en PDF: pdf/documento.pdf
-  - Presentaciones: presentaciones/conceptos_basicos.pdf 
+  - Presentaciones: 
+      - Conceptos básicos: presentaciones/conceptos_basicos.pdf
+      - Consulta de datos: presentaciones/Mastering_SQL_Queries.pdf
 
 # ===============================
 #   OPCIONAL: CONFIGURACIÓN EXTRA
