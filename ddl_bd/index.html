@@ -871,7 +871,7 @@ Imagina que tenemos una tabla <code>JUGADORES</code>:</p>
         varchar(50) apellido "NOT_NULL"
         varchar(30) nombre "NOT_NULL"
     }</code></pre>
-<p>y queremos relacionarla con la tabla EQUIPOS. Para ello debemos amodificar la tabla <code>JUGADORES</code> creando un campo FOREIGN KEY nuevo (<code>ìd_equipo_fk</code>) que hará de conexión con la tabla <code>EQUIPOS</code>, a través de su PRIMARY KEY <code>id_equipo</code>.</p>
+<p>y queremos relacionarla con la tabla EQUIPOS. Para ello debemos modificar la tabla <code>JUGADORES</code> creando un campo FOREIGN KEY nuevo (<code>ìd_equipo_fk</code>) que hará de conexión con la tabla <code>EQUIPOS</code>, a través de su PRIMARY KEY <code>id_equipo</code>.</p>
 <pre class="mermaid"><code>erDiagram
     JUGADORES {
         int id_jugador PK "AUTO_INCREMENT"
