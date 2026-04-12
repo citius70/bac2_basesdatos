@@ -114,7 +114,9 @@ nav:
   - Documento en PDF: pdf/documento.pdf
   - Presentaciones: 
       - Conceptos básicos: presentaciones/conceptos_basicos.pdf
-      - Consulta de datos: presentaciones/Mastering_SQL_Queries.pdf
+      - Comandos DDL: presentaciones/The_DDL_Blueprint.pdf
+      - Comandos DML: presentaciones/DML_Lifecycle_Mastery.pdf
+      - Comandos DQL: presentaciones/Mastering_SQL_Queries.pdf
 
 # ===============================
 #   OPCIONAL: CONFIGURACIÓN EXTRA
