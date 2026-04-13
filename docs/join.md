@@ -59,7 +59,7 @@ El `INNER JOIN` se utiliza para combinar registros de dos tablas, devolviendo ú
 
 ```sql
 SELECT (campos)
-Tabla1 LEFT JOIN Tabla2
+Tabla1 INNER JOIN Tabla2
 ON Tabla1.id1 = Tabla2.id2
 ```
 

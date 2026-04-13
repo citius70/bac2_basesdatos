@@ -349,16 +349,24 @@ FROM ______;
 
 **Consulta 5 — Nombre y apellidos del jugador junto al estadio en el que juega:**
 ```sql
-SELECT JUGADORES.apellidos, JUGADORES.______, EQUIPOS.______
-FROM ______
-JOIN EQUIPOS ON JUGADORES.______ = EQUIPOS.______;
+SELECT 
+    JUGADORES.apellidos, 
+    JUGADORES.nombre,
+    EQUIPOS.estadio
+FROM JUGADORES
+JOIN EQUIPOS 
+ON JUGADORES.fk_equipo = EQUIPOS.pk_equipo;
 ```
 
 **Consulta 6 — Jugadores cuyo estadio tiene más de 50.000 espectadores:**
 ```sql
-SELECT JUGADORES.apellidos, JUGADORES.nombre, EQUIPOS.estadio
+SELECT 
+    JUGADORES.apellidos, 
+    JUGADORES.nombre, 
+    EQUIPOS.estadio
 FROM JUGADORES
-JOIN ______ ON JUGADORES.fk_equipo = ______.pk_equipo
+JOIN ______ 
+ON JUGADORES.fk_equipo = ______.pk_equipo
 WHERE ______.______ > 50000;
 ```
 
