@@ -1676,14 +1676,22 @@ Recuerda: <code>pk_jugador</code> se asigna automáticamente.</p>
 Patrón: <code>JOIN tabla2 ON tabla1.fk_campo = tabla2.pk_campo</code></p>
 </blockquote>
 <p><strong>Consulta 5 — Nombre y apellidos del jugador junto al estadio en el que juega:</strong>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">apellidos</span><span class="p">,</span><span class="w"> </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">______</span><span class="p">,</span><span class="w"> </span><span class="n">EQUIPOS</span><span class="p">.</span><span class="n">______</span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">______</span>
-<span class="k">JOIN</span><span class="w"> </span><span class="n">EQUIPOS</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">______</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EQUIPOS</span><span class="p">.</span><span class="n">______</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span>
+<span class="w">    </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">apellidos</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">nombre</span><span class="p">,</span>
+<span class="w">    </span><span class="n">EQUIPOS</span><span class="p">.</span><span class="n">estadio</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">JUGADORES</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">EQUIPOS</span><span class="w"> </span>
+<span class="k">ON</span><span class="w"> </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">fk_equipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EQUIPOS</span><span class="p">.</span><span class="n">pk_equipo</span><span class="p">;</span>
 </code></pre></div></p>
 <p><strong>Consulta 6 — Jugadores cuyo estadio tiene más de 50.000 espectadores:</strong>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">apellidos</span><span class="p">,</span><span class="w"> </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">EQUIPOS</span><span class="p">.</span><span class="n">estadio</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span>
+<span class="w">    </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">apellidos</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">EQUIPOS</span><span class="p">.</span><span class="n">estadio</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">JUGADORES</span>
-<span class="k">JOIN</span><span class="w"> </span><span class="n">______</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">fk_equipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">______</span><span class="p">.</span><span class="n">pk_equipo</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">______</span><span class="w"> </span>
+<span class="k">ON</span><span class="w"> </span><span class="n">JUGADORES</span><span class="p">.</span><span class="n">fk_equipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">______</span><span class="p">.</span><span class="n">pk_equipo</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">______</span><span class="p">.</span><span class="n">______</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50000</span><span class="p">;</span>
 </code></pre></div></p>
 <div class="admonition warning">
