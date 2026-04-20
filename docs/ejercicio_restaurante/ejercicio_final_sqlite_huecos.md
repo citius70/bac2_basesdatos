@@ -314,9 +314,17 @@ JOIN COCINEROS ON PLATOS.______ = COCINEROS.______;
 
 **Consulta 5 — Nombre del plato y su categoría gastronómica:**
 ```sql
-SELECT PLATOS.nombre AS plato, CATEGORIAS.nombre AS ______
+SELECT PLATOS.nombre AS plato, CATEGORIAS.nombre AS categoria
 FROM PLATOS
 ______ CATEGORIAS ON PLATOS.fk_categoria = ______.______;
+```
+
+**Consulta 6 - Nombre de los platos que no se pueden preparar porque su cocinera o cocinero está de baja laboral**
+```sql
+SELECT PLATOS.nombre AS plato, COCINEROS.nombre AS cocinero
+FROM ______   
+JOIN ______ ON PLATOS.fk_cocinero = COCINEROS.pk_cocinero
+WHERE COCINEROS.______ = '____';
 ```
 
 !!! warning "Entrega Nº 4"
